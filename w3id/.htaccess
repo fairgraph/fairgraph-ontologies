@@ -1,0 +1,20 @@
+# Persistent URIs for FAIRGraph: https://w3id.org/fairgraph/...
+# Goes to https://github.com/perma-id/w3id.org as fairgraph/.htaccess (see README.md next to it).
+# Files are served by GitHub Pages; browsers get the GitHub page of the same file.
+
+Options +FollowSymLinks
+RewriteEngine on
+
+# Catalog and files: /fairgraph/catalog.json, /fairgraph/vocabularies/species/vocabulary.ttl, ...
+RewriteRule ^$ https://github.com/fairgraph/fairgraph-ontologies [R=302,L]
+RewriteRule ^((catalog\.(json|ttl))|((ontology|standards|vocabularies)/.+))$ https://fairgraph.github.io/fairgraph-ontologies/$1 [R=302,L]
+
+# The core ontology: Turtle for RDF clients, the GitHub page for browsers
+RewriteCond %{HTTP_ACCEPT} text/html
+RewriteRule ^ontology/?$ https://github.com/fairgraph/fairgraph-ontologies/blob/main/ontology/fairgraph.ttl [R=303,L]
+RewriteRule ^ontology/?$ https://fairgraph.github.io/fairgraph-ontologies/ontology/fairgraph.ttl [R=303,L]
+
+# Vocabulary terms: /fairgraph/vocab/<vocabulary>/<term> -> the vocabulary that defines it
+RewriteCond %{HTTP_ACCEPT} text/html
+RewriteRule ^vocab/([a-z0-9-]+)(/.*)?$ https://github.com/fairgraph/fairgraph-ontologies/tree/main/vocabularies/$1 [R=303,L]
+RewriteRule ^vocab/([a-z0-9-]+)(/.*)?$ https://fairgraph.github.io/fairgraph-ontologies/vocabularies/$1/vocabulary.ttl [R=303,L]

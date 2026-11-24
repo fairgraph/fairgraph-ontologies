@@ -1,0 +1,87 @@
+{
+  "release": "unreleased",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "ontology": {
+    "id": "fairgraph",
+    "title": "FAIRGraph core ontology",
+    "namespace": "https://fairgraph.nl/ontology#",
+    "file": "ontology/fairgraph.ttl",
+    "sha256": "87b9b4f41d96160bb2cdf9dee7b70d1a430e1c13fca62bb18eed15beeba1be45"
+  },
+  "vocabularies": [
+    {
+      "id": "sample-controls",
+      "title": "Sample controls",
+      "description": "Controls used in place of a biological material, such as unplanted soil.",
+      "class": "https://fairgraph.nl/ontology#ControlSample",
+      "prefixes": {
+        "controls": "https://w3id.org/fairgraph/vocab/sample-controls/"
+      },
+      "uri_patterns": [
+        "^https://w3id\\.org/fairgraph/vocab/sample-controls/[a-z0-9][a-z0-9-]*$"
+      ],
+      "source": {
+        "lookup": "none"
+      },
+      "file": "vocabularies/sample-controls/vocabulary.ttl",
+      "sha256": "828cd10155fc39b27af2c881a1c01b8ae228c6662361b60e1fc4c33399c7ff9f",
+      "terms": 2
+    },
+    {
+      "id": "species",
+      "title": "Species",
+      "description": "Taxa of the biological materials in FAIRGraph databases: NCBI Taxonomy taxa, plus strains and varieties NCBI does not have.",
+      "class": "https://fairgraph.nl/ontology#Species",
+      "prefixes": {
+        "obo": "http://purl.obolibrary.org/obo/",
+        "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+        "species": "https://w3id.org/fairgraph/vocab/species/"
+      },
+      "uri_patterns": [
+        "^http://purl\\.obolibrary\\.org/obo/NCBITaxon_[0-9]+$",
+        "^https://w3id\\.org/fairgraph/vocab/species/[a-z0-9][a-z0-9-]*$"
+      ],
+      "source": {
+        "ontology": "ncbitaxon",
+        "lookup": "ols"
+      },
+      "file": "vocabularies/species/vocabulary.ttl",
+      "sha256": "085e1fde3243c248fddbf7a1d034118ee45379bc412fd15b5a0d09c2fd39d0f1",
+      "terms": 2382
+    }
+  ],
+  "standards": [
+    {
+      "id": "fair2grow-gdp",
+      "title": "FAIR2GROW GDP",
+      "description": "FAIR2GROW GDP measurements data model v0.1 (Semantic Treehouse): sensor observations linked to their experiment, cultivation and sensor.",
+      "vocabularies": [],
+      "file": "standards/fair2grow-gdp.yaml",
+      "sha256": "bc7ba8e64e0d4fa96cee12dc0836021b1a7109fd5d09a89eedf41d4c0bbae676"
+    },
+    {
+      "id": "isatab",
+      "title": "ISATAB",
+      "description": "ISA-Tab standard definition mapping Investigation, Study, Sample, and Assay metadata for metabolomics studies.",
+      "vocabularies": [],
+      "file": "standards/isatab.yaml",
+      "sha256": "a7f79429d047916d36fd58bfea5005728800dbf6c4c67264b3b57c8a17a1158d"
+    },
+    {
+      "id": "miappe",
+      "title": "MIAPPE",
+      "description": "MIAPPE v1.2 plant phenotyping standard definition mapping Investigation, Study, Biological Material, Observation Unit, and Variable metadata.",
+      "vocabularies": [],
+      "file": "standards/miappe.yaml",
+      "sha256": "24d579d13b3296964906ff1d7c4d4df052dc8e483a6d68be29b0e8ff40698db3"
+    },
+    {
+      "id": "questionnaires",
+      "title": "Questionnaires",
+      "description": "Standard definition mapping Project, Medical Study, Outcomes, Methods, Instrumentation, Dataset, and Manufacturer metadata.",
+      "vocabularies": [],
+      "file": "standards/questionnaires.yaml",
+      "sha256": "d066bec6ce153ea91b187f18a8be5db0b1acf076978782b5548bbe99e2f25583"
+    }
+  ]
+}

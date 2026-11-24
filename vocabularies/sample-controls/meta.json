@@ -1,0 +1,13 @@
+{
+  "id": "sample-controls",
+  "title": "Sample controls",
+  "description": "Controls used in place of a biological material, such as unplanted soil.",
+  "class": "https://fairgraph.nl/ontology#ControlSample",
+  "prefixes": {
+    "controls": "https://w3id.org/fairgraph/vocab/sample-controls/"
+  },
+  "uri_patterns": [
+    "^https://w3id\\.org/fairgraph/vocab/sample-controls/[a-z0-9][a-z0-9-]*$"
+  ],
+  "source": {"lookup": "none"}
+}

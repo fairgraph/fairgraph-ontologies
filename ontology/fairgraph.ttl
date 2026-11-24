@@ -1,0 +1,199 @@
+@prefix fs:      <https://fairgraph.nl/ontology#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# The FAIRGraph core ontology: the terms the FAIRGraph application itself uses, in the
+# namespace its databases already hold. Standards and vocabularies are in their own files.
+
+<https://fairgraph.nl/ontology> a owl:Ontology ;
+    rdfs:label "FAIRGraph core ontology"@en ;
+    dcterms:description "Classes and properties used by the FAIRGraph application: records, standards, import templates, sharing, display hints and shared vocabularies."@en ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    owl:versionInfo "2026.11.0" .
+
+#################################################################
+# Records
+#################################################################
+
+fs:GenericEntity a owl:Class ;
+    rdfs:label "Entity"@en ;
+    rdfs:comment "Superclass of every record class. Gives each record a Label, Identifier, Title and Description."@en .
+
+fs:sharedWith a owl:DatatypeProperty ;
+    rdfs:label "shared with"@en ;
+    rdfs:comment "Username of a user the record is shared with."@en ;
+    rdfs:range xsd:string .
+
+fs:SharingShape a owl:Class ;
+    rdfs:label "Sharing shape"@en ;
+    rdfs:comment "SHACL shape that checks fs:sharedWith values."@en .
+
+#################################################################
+# Standards (graph https://fairgraph.nl/graphs/standards)
+#################################################################
+
+fs:Standard a owl:Class ;
+    rdfs:label "Standard"@en ;
+    rdfs:comment "A metadata standard uploaded as a YAML template, such as MIAPPE or ISA-Tab."@en .
+
+fs:StandardClass a owl:Class ;
+    rdfs:label "Standard class"@en ;
+    rdfs:comment "A record class declared by a standard."@en .
+
+fs:StandardProperty a owl:Class ;
+    rdfs:label "Standard property"@en ;
+    rdfs:comment "A property declared for a class of a standard."@en .
+
+fs:hasClass a owl:ObjectProperty ;
+    rdfs:label "has class"@en ;
+    rdfs:domain fs:Standard ;
+    rdfs:range fs:StandardClass .
+
+fs:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property"@en ;
+    rdfs:domain fs:StandardClass ;
+    rdfs:range fs:StandardProperty .
+
+fs:classUri a owl:ObjectProperty ;
+    rdfs:label "class URI"@en ;
+    rdfs:comment "The URI of the class that records of this standard class have."@en ;
+    rdfs:domain fs:StandardClass .
+
+fs:propertyUri a owl:ObjectProperty ;
+    rdfs:label "property URI"@en ;
+    rdfs:comment "The predicate a standard property stands for."@en ;
+    rdfs:domain fs:StandardProperty .
+
+fs:rangeClass a owl:DatatypeProperty ;
+    rdfs:label "range class"@en ;
+    rdfs:comment "Name of the class a linked property points to. Absent for free-text properties."@en ;
+    rdfs:domain fs:StandardProperty .
+
+fs:recordKey a owl:DatatypeProperty ;
+    rdfs:label "record key"@en ;
+    rdfs:comment "Which column names a record of this class: \"label\" or \"identifier\"."@en ;
+    rdfs:domain fs:StandardClass ;
+    rdfs:range xsd:string .
+
+fs:description a owl:DatatypeProperty ;
+    rdfs:label "description"@en ;
+    rdfs:comment "Description of a standard."@en ;
+    rdfs:range xsd:string .
+
+fs:isVocabulary a owl:DatatypeProperty ;
+    rdfs:label "is vocabulary"@en ;
+    rdfs:comment "True for a class whose records are vocabulary terms (housekeeping data) rather than research records."@en ;
+    rdfs:range xsd:boolean .
+
+#################################################################
+# Import templates
+#################################################################
+
+fs:MetadataTemplate a owl:Class ;
+    rdfs:label "Metadata template"@en ;
+    rdfs:comment "How the columns of an imported sheet map to a class and its properties."@en .
+
+fs:targetClass a owl:ObjectProperty ;
+    rdfs:label "target class"@en ;
+    rdfs:comment "The class the rows of the sheet become."@en ;
+    rdfs:domain fs:MetadataTemplate .
+
+fs:tableName a owl:DatatypeProperty ;
+    rdfs:label "table name"@en ;
+    rdfs:comment "Name of the sheet or table the template is for."@en ;
+    rdfs:domain fs:MetadataTemplate ;
+    rdfs:range xsd:string .
+
+fs:hasColumn a owl:ObjectProperty ;
+    rdfs:label "has column"@en ;
+    rdfs:domain fs:MetadataTemplate .
+
+fs:columnName a owl:DatatypeProperty ;
+    rdfs:label "column name"@en ;
+    rdfs:range xsd:string .
+
+fs:mappedProperty a owl:ObjectProperty ;
+    rdfs:label "mapped property"@en ;
+    rdfs:comment "The predicate a column's values are stored with."@en .
+
+#################################################################
+# Shapes: names and hierarchy (annotations on sh:NodeShape)
+#################################################################
+
+fs:namePlural a owl:AnnotationProperty ;
+    rdfs:label "plural name"@en ;
+    rdfs:comment "Plural of the class name, for display."@en .
+
+fs:hierarchyRoot a owl:AnnotationProperty ;
+    rdfs:label "hierarchy root"@en ;
+    rdfs:comment "True for the top class of a record hierarchy, such as Investigation."@en .
+
+fs:partOfHierarchy a owl:AnnotationProperty ;
+    rdfs:label "part of hierarchy"@en ;
+    rdfs:comment "True for a class that is a level in a record hierarchy."@en .
+
+fs:hierarchyDescendants a owl:AnnotationProperty ;
+    rdfs:label "hierarchy descendants"@en ;
+    rdfs:comment "List of the classes one level below this class in the hierarchy."@en .
+
+fs:adminEditOnly a owl:AnnotationProperty ;
+    rdfs:label "admin edit only"@en ;
+    rdfs:comment "True for a class whose records only administrators may edit."@en .
+
+fs:representsExternalFile a owl:AnnotationProperty ;
+    rdfs:label "represents external file"@en ;
+    rdfs:comment "True for a class whose records stand for files in external storage."@en .
+
+#################################################################
+# Shapes: property display hints (annotations on sh:PropertyShape)
+#################################################################
+
+fs:importantProperty a owl:AnnotationProperty ;
+    rdfs:label "important property"@en ;
+    rdfs:comment "True for a property shown prominently, for example in record lists."@en .
+
+fs:machineOnly a owl:AnnotationProperty ;
+    rdfs:label "machine only"@en ;
+    rdfs:comment "True for a property whose values are set by software, not typed by users."@en .
+
+fs:externalLink a owl:AnnotationProperty ;
+    rdfs:label "external link"@en ;
+    rdfs:comment "True for a property whose value is a URL to open, such as a file's storage location."@en .
+
+#################################################################
+# Record structure from MetaTree imports
+#################################################################
+
+fs:belongsTo a owl:ObjectProperty ;
+    rdfs:label "belongs to"@en ;
+    rdfs:comment "Links a record to the folder record it belongs to, in data imported from MetaTree."@en .
+
+fs:movedTo a owl:ObjectProperty ;
+    rdfs:label "moved to"@en ;
+    skos:editorialNote "Used in data imported from MetaTree; its exact meaning is to be documented."@en .
+
+#################################################################
+# Location (WGS84 bounding box, decimal degrees)
+#################################################################
+
+fs:westBoundLongitude a owl:DatatypeProperty ; rdfs:label "west bound longitude"@en ; rdfs:range xsd:double .
+fs:eastBoundLongitude a owl:DatatypeProperty ; rdfs:label "east bound longitude"@en ; rdfs:range xsd:double .
+fs:southBoundLatitude a owl:DatatypeProperty ; rdfs:label "south bound latitude"@en ; rdfs:range xsd:double .
+fs:northBoundLatitude a owl:DatatypeProperty ; rdfs:label "north bound latitude"@en ; rdfs:range xsd:double .
+
+#################################################################
+# Shared vocabularies
+#################################################################
+
+fs:Species a owl:Class ;
+    rdfs:label "Species"@en ;
+    rdfs:comment "A taxon a biological material belongs to. Terms are NCBI Taxonomy taxa where one exists (http://purl.obolibrary.org/obo/NCBITaxon_<id>); strains and varieties without an NCBI taxon are FAIRGraph terms linked to their taxon with skos:broadMatch."@en .
+
+fs:ControlSample a owl:Class ;
+    rdfs:label "Control sample"@en ;
+    rdfs:comment "A control used in place of a biological material, such as unplanted soil."@en .

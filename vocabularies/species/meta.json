@@ -1,0 +1,16 @@
+{
+  "id": "species",
+  "title": "Species",
+  "description": "Taxa of the biological materials in FAIRGraph databases: NCBI Taxonomy taxa, plus strains and varieties NCBI does not have.",
+  "class": "https://fairgraph.nl/ontology#Species",
+  "prefixes": {
+    "obo": "http://purl.obolibrary.org/obo/",
+    "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+    "species": "https://w3id.org/fairgraph/vocab/species/"
+  },
+  "uri_patterns": [
+    "^http://purl\\.obolibrary\\.org/obo/NCBITaxon_[0-9]+$",
+    "^https://w3id\\.org/fairgraph/vocab/species/[a-z0-9][a-z0-9-]*$"
+  ],
+  "source": {"ontology": "ncbitaxon", "lookup": "ols"}
+}

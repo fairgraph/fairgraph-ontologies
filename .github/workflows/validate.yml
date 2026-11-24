@@ -1,0 +1,22 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      # Turtle and YAML parse, terms have one label and unambiguous names, URIs are in the
+      # vocabulary's namespaces, catalog.json lists every file with its current checksum
+      - run: python scripts/validate.py

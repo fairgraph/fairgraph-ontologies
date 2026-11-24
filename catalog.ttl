@@ -1,0 +1,78 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://w3id.org/fairgraph/> a dcat:Catalog ;
+    dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:title "FAIRGraph ontologies and vocabularies"@en ;
+    rdfs:comment "Release unreleased" ;
+    dcat:dataset <https://w3id.org/fairgraph/ontology>,
+        <https://w3id.org/fairgraph/standards/fair2grow-gdp>,
+        <https://w3id.org/fairgraph/standards/isatab>,
+        <https://w3id.org/fairgraph/standards/miappe>,
+        <https://w3id.org/fairgraph/standards/questionnaires>,
+        <https://w3id.org/fairgraph/vocab/sample-controls>,
+        <https://w3id.org/fairgraph/vocab/species> .
+
+<https://w3id.org/fairgraph/ontology> a dcat:Dataset ;
+    dcterms:title "FAIRGraph core ontology"@en ;
+    dcat:distribution <https://w3id.org/fairgraph/ontology/fairgraph.ttl> .
+
+<https://w3id.org/fairgraph/standards/fair2grow-gdp> a dcat:Dataset ;
+    dcterms:description "FAIR2GROW GDP measurements data model v0.1 (Semantic Treehouse): sensor observations linked to their experiment, cultivation and sensor."@en ;
+    dcterms:title "FAIR2GROW GDP"@en ;
+    dcat:distribution <https://w3id.org/fairgraph/standards/fair2grow-gdp.yaml> .
+
+<https://w3id.org/fairgraph/standards/isatab> a dcat:Dataset ;
+    dcterms:description "ISA-Tab standard definition mapping Investigation, Study, Sample, and Assay metadata for metabolomics studies."@en ;
+    dcterms:title "ISATAB"@en ;
+    dcat:distribution <https://w3id.org/fairgraph/standards/isatab.yaml> .
+
+<https://w3id.org/fairgraph/standards/miappe> a dcat:Dataset ;
+    dcterms:description "MIAPPE v1.2 plant phenotyping standard definition mapping Investigation, Study, Biological Material, Observation Unit, and Variable metadata."@en ;
+    dcterms:title "MIAPPE"@en ;
+    dcat:distribution <https://w3id.org/fairgraph/standards/miappe.yaml> .
+
+<https://w3id.org/fairgraph/standards/questionnaires> a dcat:Dataset ;
+    dcterms:description "Standard definition mapping Project, Medical Study, Outcomes, Methods, Instrumentation, Dataset, and Manufacturer metadata."@en ;
+    dcterms:title "Questionnaires"@en ;
+    dcat:distribution <https://w3id.org/fairgraph/standards/questionnaires.yaml> .
+
+<https://w3id.org/fairgraph/vocab/sample-controls> a dcat:Dataset ;
+    dcterms:description "Controls used in place of a biological material, such as unplanted soil."@en ;
+    dcterms:title "Sample controls"@en ;
+    dcat:distribution <https://w3id.org/fairgraph/vocabularies/sample-controls/vocabulary.ttl> .
+
+<https://w3id.org/fairgraph/vocab/species> a dcat:Dataset ;
+    dcterms:description "Taxa of the biological materials in FAIRGraph databases: NCBI Taxonomy taxa, plus strains and varieties NCBI does not have."@en ;
+    dcterms:title "Species"@en ;
+    dcat:distribution <https://w3id.org/fairgraph/vocabularies/species/vocabulary.ttl> .
+
+<https://w3id.org/fairgraph/ontology/fairgraph.ttl> a dcat:Distribution ;
+    dcat:downloadURL <https://w3id.org/fairgraph/ontology/fairgraph.ttl> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle> .
+
+<https://w3id.org/fairgraph/standards/fair2grow-gdp.yaml> a dcat:Distribution ;
+    dcat:downloadURL <https://w3id.org/fairgraph/standards/fair2grow-gdp.yaml> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/application/yaml> .
+
+<https://w3id.org/fairgraph/standards/isatab.yaml> a dcat:Distribution ;
+    dcat:downloadURL <https://w3id.org/fairgraph/standards/isatab.yaml> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/application/yaml> .
+
+<https://w3id.org/fairgraph/standards/miappe.yaml> a dcat:Distribution ;
+    dcat:downloadURL <https://w3id.org/fairgraph/standards/miappe.yaml> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/application/yaml> .
+
+<https://w3id.org/fairgraph/standards/questionnaires.yaml> a dcat:Distribution ;
+    dcat:downloadURL <https://w3id.org/fairgraph/standards/questionnaires.yaml> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/application/yaml> .
+
+<https://w3id.org/fairgraph/vocabularies/sample-controls/vocabulary.ttl> a dcat:Distribution ;
+    dcat:downloadURL <https://w3id.org/fairgraph/vocabularies/sample-controls/vocabulary.ttl> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle> .
+
+<https://w3id.org/fairgraph/vocabularies/species/vocabulary.ttl> a dcat:Distribution ;
+    dcat:downloadURL <https://w3id.org/fairgraph/vocabularies/species/vocabulary.ttl> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle> .
+
