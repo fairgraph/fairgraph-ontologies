@@ -71,9 +71,11 @@
       "id": "miappe",
       "title": "MIAPPE",
       "description": "MIAPPE v1.2 plant phenotyping standard definition mapping Investigation, Study, Biological Material, Observation Unit, and Variable metadata.",
-      "vocabularies": [],
+      "vocabularies": [
+        "species"
+      ],
       "file": "standards/miappe.yaml",
-      "sha256": "24d579d13b3296964906ff1d7c4d4df052dc8e483a6d68be29b0e8ff40698db3"
+      "sha256": "404fde340f095e4e51efb2040e01afdb403ac5f144b03813e0ff6dad0731cffd"
     },
     {
       "id": "questionnaires",
