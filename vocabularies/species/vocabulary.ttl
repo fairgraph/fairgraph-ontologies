@@ -2089,6 +2089,10 @@ obo:NCBITaxon_215227 a fs:Species ;
     rdfs:label "Papaver bracteatum" ;
     skos:exactMatch uniprot:215227 .
 
+obo:NCBITaxon_217619 a fs:Species ;
+    rdfs:label "Cucumis melo subsp. agrestis" ;
+    skos:exactMatch uniprot:217619 .
+
 obo:NCBITaxon_217838 a fs:Species ;
     rdfs:label "Acmella radicans" ;
     skos:exactMatch uniprot:217838 .
@@ -2486,6 +2490,10 @@ obo:NCBITaxon_271192 a fs:Species ;
 obo:NCBITaxon_272141 a fs:Species ;
     rdfs:label "Palicourea condensata" ;
     skos:exactMatch uniprot:272141 .
+
+obo:NCBITaxon_2726055 a fs:Species ;
+    rdfs:label "Cucurbita melopepo subsp. texana" ;
+    skos:exactMatch uniprot:2726055 .
 
 obo:NCBITaxon_272952 a fs:Species ;
     rdfs:label "Hyaloperonospora arabidopsidis" ;
@@ -3459,6 +3467,10 @@ obo:NCBITaxon_3192 a fs:Species ;
     rdfs:label "Spermatozopsis similis" ;
     skos:exactMatch uniprot:3192 .
 
+obo:NCBITaxon_319220 a fs:Species ;
+    rdfs:label "Cucumis sativus var. hardwickii" ;
+    skos:exactMatch uniprot:319220 .
+
 obo:NCBITaxon_3197 a fs:Species ;
     rdfs:label "Marchantia polymorpha" ;
     skos:exactMatch uniprot:3197 .
@@ -4073,6 +4085,10 @@ obo:NCBITaxon_34292 a fs:Species ;
     skos:altLabel "Populus kitakamiensis" ;
     skos:exactMatch uniprot:34292 .
 
+obo:NCBITaxon_34294 a fs:Species ;
+    rdfs:label "Cucurbita argyrosperma" ;
+    skos:exactMatch uniprot:34294 .
+
 obo:NCBITaxon_34297 a fs:Species ;
     rdfs:label "Datisca glomerata" ;
     skos:exactMatch uniprot:34297 .
@@ -4638,10 +4654,6 @@ obo:NCBITaxon_3652 a fs:Species ;
     skos:altLabel "Bryonia dioica" ;
     skos:exactMatch uniprot:3652 .
 
-obo:NCBITaxon_3654 a fs:Species ;
-    rdfs:label "Citrullus lanatus" ;
-    skos:exactMatch uniprot:3654 .
-
 obo:NCBITaxon_3656 a fs:Species ;
     rdfs:label "Cucumis melo" ;
     skos:exactMatch uniprot:3656 .
@@ -4975,6 +4987,10 @@ obo:NCBITaxon_3762 a fs:Species ;
 obo:NCBITaxon_3763 a fs:Species ;
     rdfs:label "Geum borisii" ;
     skos:exactMatch uniprot:3763 .
+
+obo:NCBITaxon_37649 a fs:Species ;
+    rdfs:label "Cucurbita melopepo var. fraterna" ;
+    skos:exactMatch uniprot:37649 .
 
 obo:NCBITaxon_3765 a fs:Species ;
     rdfs:label "Rosa x damascena" ;
@@ -7688,6 +7704,11 @@ obo:NCBITaxon_519296 a fs:Species ;
     rdfs:label "Nesocodon mauritianus" ;
     skos:exactMatch uniprot:519296 .
 
+obo:NCBITaxon_519315 a fs:Species ;
+    rdfs:label "Citrullus mucosospermus" ;
+    skos:altLabel "Citrullus lanatus subsp. mucosospermus" ;
+    skos:exactMatch uniprot:519315 .
+
 obo:NCBITaxon_51953 a fs:Species ;
     rdfs:label "Elaeis guineensis" ;
     skos:altLabel "Elaeis guineensis var. tenera" ;
@@ -8466,6 +8487,10 @@ obo:NCBITaxon_61861 a fs:Species ;
 obo:NCBITaxon_61864 a fs:Species ;
     rdfs:label "Sandersonia aurantiaca" ;
     skos:exactMatch uniprot:61864 .
+
+obo:NCBITaxon_61886 a fs:Species ;
+    rdfs:label "Cucumis metuliferus" ;
+    skos:exactMatch uniprot:61886 .
 
 obo:NCBITaxon_61887 a fs:Species ;
     rdfs:label "Cucumis zeyherii" ;
@@ -9717,6 +9742,14 @@ species:brassica-oleracea-var-rivera a fs:Species ;
     dcterms:replaces <https://sils.uva.nl/ontology#BORivera> ;
     skos:broadMatch obo:NCBITaxon_3712 .
 
+species:citrullus-lanatus-var-lanatus a fs:Species ;
+    rdfs:label "Citrullus lanatus var. lanatus" ;
+    skos:broadMatch obo:NCBITaxon_3654 .
+
+species:citrullus-lanatus-var-vulgaris a fs:Species ;
+    rdfs:label "Citrullus lanatus var. vulgaris" ;
+    skos:broadMatch obo:NCBITaxon_3654 .
+
 species:pseudomonas-simiae-wcs417 a fs:Species ;
     rdfs:label "Pseudomonas simiae WCS417" ;
     dcterms:replaces <https://uniprot.org/taxonomy/A0A1N7U5Z2> ;
@@ -9727,6 +9760,10 @@ species:pseudomonas-wcs315 a fs:Species ;
     dcterms:replaces <https://uniprot.org/taxonomy/PWCS315> ;
     skos:altLabel "Pseudomonas WCS315" ;
     skos:broadMatch obo:NCBITaxon_286 .
+
+obo:NCBITaxon_3654 a fs:Species ;
+    rdfs:label "Citrullus lanatus" ;
+    skos:exactMatch uniprot:3654 .
 
 obo:NCBITaxon_3712 a fs:Species ;
     rdfs:label "Brassica oleracea" ;

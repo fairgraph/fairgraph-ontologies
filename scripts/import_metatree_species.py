@@ -65,6 +65,25 @@ MERGED = {
 }
 
 
+# Species the microp database uses that are not in the three species lists: from microp's
+# vocabulary workbook (data/metatree-2/export/fairgraph/vocabulary.xlsx in fairgraph-2), 2026-11-25.
+EXTRA_TAXA = {
+    519315: "Citrullus lanatus subsp. mucosospermus",
+    217619: "Cucumis melo subsp. agrestis",
+    61886: "Cucumis metuliferus",
+    319220: "Cucumis sativus var. hardwickii",
+    34294: "Cucurbita argyrosperma",
+    2726055: "Cucurbita melopepo subsp. texana",
+    # microp has 34649 (a scorpion, Olivierus martensii): a typo for 37649
+    37649: "Cucurbita melopepo var. fraterna",
+}
+# Varieties NCBI does not have (checked 2026-11-25), as local terms of their species
+EXTRA_LOCAL = [
+    {"id": "citrullus-lanatus-var-lanatus", "label": "Citrullus lanatus var. lanatus", "broad": 3654},
+    {"id": "citrullus-lanatus-var-vulgaris", "label": "Citrullus lanatus var. vulgaris", "broad": 3654},
+]
+
+
 def read_sources(folder):
     terms = {}
     for name in SOURCE_FILES:
@@ -122,7 +141,8 @@ def main(folder, root):
     if missing:
         sys.exit(f"Not curated: {missing}")
     wanted = set(numeric.values()) | {c["taxon"] for c in CURATED.values() if "taxon" in c} \
-        | {c["broad"] for c in CURATED.values() if "broad" in c}
+        | {c["broad"] for c in CURATED.values() if "broad" in c} \
+        | set(EXTRA_TAXA) | {c["broad"] for c in EXTRA_LOCAL}
     names = ncbi_names(wanted)
     print(f"NCBI: {len(names)} of {len(wanted)} taxon IDs found")
 
@@ -147,6 +167,14 @@ def main(folder, root):
 
     for uri, taxon_id in sorted(numeric.items(), key=lambda kv: kv[1]):
         add_taxon(taxon_id, sources[uri], uri)
+
+    for taxon_id, name in EXTRA_TAXA.items():
+        add_taxon(taxon_id, name, f"microp vocabulary: {taxon_id}")
+    for cur in EXTRA_LOCAL:
+        term = URIRef(f"{LOCAL}species/{cur['id']}")
+        species.add((term, RDF.type, FS.Species))
+        species.add((term, RDFS.label, Literal(cur["label"])))
+        species.add((term, SKOS.broadMatch, OBO[f"NCBITaxon_{cur['broad']}"]))
 
     for old, new in MERGED.items():
         if (OBO[f"NCBITaxon_{new}"], RDF.type, FS.Species) in species:
